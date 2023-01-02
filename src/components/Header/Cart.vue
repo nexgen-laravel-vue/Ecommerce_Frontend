@@ -12,7 +12,7 @@
                     <div v-if="msg" class="nodata">
                         <h1 class="text-center"> {{ msg }}</h1>
                     </div>
-                    <div class="card-body" v-for="items in cartData[0]" :key="items.id">
+                    <div class="card-body" v-for="items in cartData[0]">
                         <div class=" d-flex justify-content-center">
                             <div class="img">
                                 <img :src="items.product_img" class="img-fluid" width="150" height="150" />
@@ -79,54 +79,70 @@ export default {
         }
     },
     async mounted() {
-        // var response = await axios.get(`getSignleProductById/${this.id}`);
-        // console.log("data",response.data)
-
-        // if (response.status == 200) {
-        //     const data = response.data.payload
-        //     this.productdata.push(data)
-        // }
+        
         let LocalCartData = localStorage.getItem("cartData");
         if (LocalCartData == "" || LocalCartData == null) {
             this.msg = "no Item is added"
         }
 
         this.cartData.push(JSON.parse(LocalCartData))
-            console.log(this.cartData)
     },
     methods: {
-        shopping() {
-            this.$router.push({ path: "/" })
-        },
+    
         Remove(items) {
-            this.cartData[0]?.map((data, index)=>{
+            this.cartData?.map((data, index)=>{
               if(data.id === items){
-                this.cartData[0].splice(index,1)
+                this.cartData.splice(index,1)
                 this.CountData.no--
               }
             })
             console.log(this.cartData[0]);
-            localStorage.setItem("cartData",JSON.stringify(this.cartData[0]))
+            localStorage.setItem("cartData",JSON.stringify(this.cartData))
             localStorage.setItem("cartcount",this.CountData.no)
-            // localStorage.removeItem("cartData");
-            // window.location.reload();
-            // localStorage.removeItem("cartcount") 
         },
         increment(items) {
             this.cartData[0]?.map((data, index)=>{
-                console.log(data)
-                console.log(items)
-                console.log(items)
                 if(data.id==items)
                 {
+                    if(data.quantity< data.product_stock)
+                    {
                    data.quantity=data.quantity+1
-                   console.log(data)
+                   this.cartData.push(data)
+                   localStorage.setItem("cartData", JSON.stringify(data))
+                    }
+                  let cartcount= localStorage.getItem("cartcount")
+                  console.log(cartcount)
                 }
+                else
+                {
+                    this.cartData.push(data)
+                }
+                
             })
-            
+            this.cartData.push(data)
+            localStorage.setItem("cartData", JSON.stringify(data))
         },
-        decrement() {
-            this.Quantity--
+        decrement(items){
+            this.cartData[0]?.map((data, index)=>{
+                if(data.id==items)
+                {
+                    if(data.quantity< data.product_stock)
+                    {
+                   data.quantity=data.quantity-1
+                   this.cartData.push(data)
+                   localStorage.setItem("cartData", JSON.stringify(data))
+                    }
+                  let cartcount= localStorage.getItem("cartcount")
+                  console.log(cartcount)
+                }
+                else
+                {
+                    this.cartData.push(data)
+                }
+                
+            })
+            this.cartData.push(data)
+            localStorage.setItem("cartData", JSON.stringify(data))
         }
     }
 }

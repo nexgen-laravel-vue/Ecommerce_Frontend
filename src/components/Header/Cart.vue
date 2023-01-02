@@ -116,6 +116,7 @@ export default {
             this.cartData[0]?.map((data, index)=>{
                 console.log(data)
                 console.log(items)
+                console.log(items)
                 if(data.id==items)
                 {
                    data.quantity=data.quantity+1

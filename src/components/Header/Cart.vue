@@ -15,7 +15,7 @@
                     <div class="card-body" v-for="items in cartData[0]">
                         <div class=" d-flex justify-content-center">
                             <div class="img">
-                                <img :src="items.product_img" class="img-fluid" width="150" height="150" />
+                                <router-link :to="`/singleProduct/${items.id}`"><img :src="items.product_img" class="img-fluid" width="150" height="150" /></router-link>
                             </div>
                             <div class="details ">
                                 <b class="ms-3">ProductId:</b>{{ items.id }}<br />

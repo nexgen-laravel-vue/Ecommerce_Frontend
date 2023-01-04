@@ -26,23 +26,41 @@
                                         :class="{active:isActive}"
                                         @click="toggle"
                                         >{{isActive ? "on" : 'Add to cart'}}</button> -->
-                                        <button class="btn btn-outline-warning" v-on:click="decrement(items.id)"><i
-                                                class="fa fa-minus fa-lg"></i></button>
-                                        {{items.quantity }}
-                        
-                                        <button class="btn btn-outline-success" v-on:click="addToCart"><i
-                                                class="fa fa-plus fa-lg "></i></button>
-                                    
+                                    <button class="btn btn-outline-warning" v-on:click="decrement(items.id)"><i
+                                            class="fa fa-minus fa-lg"></i></button>
+                                    {{ items.quantity }}
+
+                                    <button class="btn btn-outline-success" v-on:click="addToCart"><i
+                                            class="fa fa-plus fa-lg "></i></button>
+
                                 </div>
 
                             </div>
                         </div>
 
                     </div>
+                    <div class="row justify-content-center mt-2">
+
+                    </div>
                 </div>
             </div>
 
+            <div class="col-4">
+                <div>
+                    <router-link to="/"><button class="btn btn-outline-warning me-1">
+                            Continue shopping
+                        </button></router-link>
 
+                    <router-link v-if="moveToCart()" to="/Cart"><button class="btn btn-outline-primary">GoToCart
+                            --></button>
+                    </router-link>
+
+
+
+
+
+                </div>
+            </div>
 
         </div>
         <Footer />
@@ -91,6 +109,16 @@ export default {
     methods: {
         toggle() {
             this.isActive = this.isActive ? false : true;
+        },
+        moveToCart() {
+            console.log(this.CountData.no);
+            if (this.CountData.no > 0) {
+                return true;
+            }
+            else {
+                return false;
+
+            }
         },
         addToCart() {
             //Item count

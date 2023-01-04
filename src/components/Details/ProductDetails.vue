@@ -26,8 +26,6 @@
                         </ul>
                     </div>
                 </div>
-                <i class="bi bi-cart-fill fa-2x ms-3"></i>{{ CountData.no }}
-                <i class="bi bi-0-circle-fill"></i>
             </div>
         </div>
         <div class="row nav d-flex">

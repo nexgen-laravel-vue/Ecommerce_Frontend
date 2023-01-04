@@ -27,8 +27,8 @@
                         </ul>
                     </div>
                 </div>
-                <i class="bi bi-cart-fill fa-2x ms-3"></i>
-                <i class="bi bi-0-circle-fill"></i>{{ CountData.no }}
+                <router-link to="/Cart" class="link-secondary text-decoration-none"><i
+                        class="bi bi-cart fa-2x ms-3"></i><sup class="badge"  id='lblCartCount'>{{ CountData.no }}</sup></router-link>
             </div>
         </div>
     </div>
@@ -82,6 +82,7 @@ export default {
     },
     data() {
         return {
+            
             name: localStorage.getItem("firstName"),
             CountData: {
                 no: localStorage.getItem("cartcount")
@@ -94,6 +95,7 @@ export default {
         Logout() {
             localStorage.removeItem("firstName");
             this.$router.push({ path: "/Login" })
+            localStorage.setItem("check",false)
         }
     },
     async mounted() {

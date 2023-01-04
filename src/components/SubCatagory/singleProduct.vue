@@ -20,21 +20,17 @@
                                 <b class="ms-3">ProductName:</b>{{ items.productName }}<br />
                                 <b class="ms-3 ">ProductDescription:</b>{{ items.productDescription }}<br />
                                 <b class="ms-3">Price:</b>₹ {{ items.product_price }}
-                                <div class="cart">
+                                <div class="cart ms-3">
                                     <!-- <button
                                         class="btn btn-outline-primary ms-3"
                                         :class="{active:isActive}"
                                         @click="toggle"
                                         >{{isActive ? "on" : 'Add to cart'}}</button> -->
-                                    <button class="m-3 btn btn-outline-primary" v-on:click="addToCart"> Add to
-                                        cart</button>
-
-                                   
                                         <button class="btn btn-outline-warning" v-on:click="decrement(items.id)"><i
                                                 class="fa fa-minus fa-lg"></i></button>
-                                        {{ items.quantity }}
+                                        {{items.quantity }}
                         
-                                        <button class="btn btn-outline-success" v-on:click="increment(items.id)"><i
+                                        <button class="btn btn-outline-success" v-on:click="addToCart"><i
                                                 class="fa fa-plus fa-lg "></i></button>
                                     
                                 </div>
@@ -107,40 +103,14 @@ export default {
             let cartDetails = prevCartData ? JSON.parse(prevCartData) : [];
 
             console.log(cartDetails)
-            // cartDetails.map((data, index)=>{
-            //         console.log(this.productdata[0][0].id)
-            //         console.log("id",data.id)
-            //         if(data.id!=this.productdata[0][0].id)
-            //         {
-            //             var addedItem = {...data, quantity:1};  
-            //             cartDetails.push(addedItem);
-            //             localStorage.setItem("cartData",JSON.stringify(cartDetails))
-            //             localStorage.setItem("cartcount",this.countvalue)
-            //             alert("product added")
-            //         }
-            //         else{
-            //             alert("product already added")
-
-            //         }
-            // })
             const result = cartDetails.find(({ id }) => id === this.productdata[0][0].id);
             if (result == undefined) {
                 var addedItem = { ...this.productdata[0][0], quantity: 1 };
                 cartDetails.push(addedItem);
                 localStorage.setItem("cartData", JSON.stringify(cartDetails))
                 localStorage.setItem("cartcount", this.countvalue)
-                alert("product added")
                 this.msg = "Item added to cart ";
             }
-            // else if(cartDetails == undefined || cartDetails.length ==0){
-            //     this.productdata[0][0].quantity =1;
-            //     cartDetails.push(this.productdata[0][0]);//get data from Api and added into cart
-
-            //     //Storing prodct item in localStorage
-            //     localStorage.setItem("cartData",JSON.stringify(cartDetails))  
-            //     localStorage.setItem("cartcount",this.countvalue)
-            //     this.msg="Item added to cart ";              
-            // } 
             else {
                 alert("product already added")
             }

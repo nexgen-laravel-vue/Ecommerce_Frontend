@@ -73,8 +73,8 @@ export default {
 
                 })
                     .then((res) => {
-                        // console.log(res.data)
-                        // console.log(res.data.status)
+                        console.log(res.data)
+                        console.log(res.data.status)
                         if (res.data.status == 500) {
                             this.error = "Invalid Email and Password"
                         }
@@ -82,6 +82,7 @@ export default {
                             const getData = res.data.payload;
                             let token = getData.token
                             let Role = getData.role
+                            console.log(Role)
                             let FirstName = getData.firstName
 
                             console.log("name", FirstName)
@@ -93,11 +94,15 @@ export default {
                                     localStorage.setItem("firstName", FirstName)
                                     this.$router.push({ path: '/Admin' })
                                 }
-                                if (Role == "User" || Role == "SuperAdmin") {
+                                if (Role == "User") {
                                     this.$store.dispatch('setrouterAuthcheck', true)
                                     localStorage.setItem("token", token)
                                     localStorage.setItem("firstName", FirstName)
-                                    this.$router.push({ path: '/customer' })
+                                    // check the last action and redirect user to that page
+                                    // this can be 2 types
+                                    // - 1 pervious url - example product page or contact page or any other page
+                                    // - 2 click action on icon ( example car icon, cart page )
+                                    this.$router.push({ path: '/' })
                                 }
                             }
                         }

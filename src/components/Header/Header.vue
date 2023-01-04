@@ -13,13 +13,26 @@
         </div>
         <div class="col-3 d-flex">
             <div class="card-body d-flex">
-                <div v-if="!user">
+                <div v-if="!auth">
 
-                    <p class="mt-4"><b><router-link to="/Login"
-                                class="link-secondary text-decoration-none">Login</router-link></b></p>
+                    <p class="mt-4">
+                        <b>
+                            <router-link to="/Login" class="link-secondary text-decoration-none">
+                                Login
+                            </router-link>
+                        </b>
+                    </p>
+                </div>
+                <div v-if="auth">
+
+                    <p class="mt-3"><b>
+                        <button class="btn btn-outline-warning" v-on:click="Logout">
+                            Logout
+                    </button></b></p>
                 </div>
                 <router-link to="/Cart" class="link-secondary text-decoration-none"><i
-                        class="bi bi-cart fa-2x ms-3"></i><sup class="badge"  id='lblCartCount'>{{ cart }}</sup></router-link>
+                        class="bi bi-cart fa-2x ms-3"></i><sup class="badge" id='lblCartCount'>{{ cart
+                        }}</sup></router-link>
             </div>
 
 
@@ -40,18 +53,20 @@
 </template>
 <script>
 import axios from 'axios';
+import store from '../Store/Store';
 export default {
     name: 'Header',
     props: ['cart'],
     data() {
         return {
             list: [],
+            auth: ""
 
         }
     },
     async mounted() {
 
-        this.$store.state.routerAuthcheck
+        this.auth = store.state.routerAuthcheck
         await axios.get(`getAllParentCategory`)
             .then((result) => {
                 if (result.status == 200 && result.data.payload.length > 0) {
@@ -60,6 +75,15 @@ export default {
 
                 }
             })
+    },
+    methods:{
+        Logout(){
+            localStorage.removeItem("firstName");
+            this.$router.push({ path: "/Login" })
+            this.$store.dispatch('setrouterAuthcheck', false)
+            localStorage.setItem("check",false)
+            
+        }
     }
 
 

@@ -101,6 +101,7 @@ const routes = [
     name: "Cart",
     component: Cart,
     path: "/Cart",
+    meta: { auth: true },
   },
 ];
 const router = createRouter({
@@ -109,7 +110,9 @@ const router = createRouter({
   linkActiveClass: "active",
 });
 router.beforeEach((to, from, next) => {
+  
   let routerAuthcheck = store.state.routerAuthcheck;
+  
   if (to.matched.some((record) => record.meta.auth)) {
     if (routerAuthcheck) {
       next();

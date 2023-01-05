@@ -81,6 +81,7 @@ export default {
                         else if (res.data.status == 200) {
                             const getData = res.data.payload;
                             let token = getData.token
+                            console.log(token)
                             let Role = getData.role
                             console.log(Role)
                             let FirstName = getData.firstName

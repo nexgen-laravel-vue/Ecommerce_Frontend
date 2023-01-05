@@ -7,7 +7,7 @@
             <div class="col-9">
                 <div class="card ">
                     <div class="card-header justify-content-center">
-                        <h3 class="text-center">Cart Product</h3>
+                        <h3 class="text-center"> My Cart</h3>
                     </div>
                     <div v-if="msg" class="nodata">
                         <h1 class="text-center"> {{ msg }}</h1>
@@ -104,8 +104,8 @@ export default {
                     console.log("data",data)
                     let obj = {
                         productId : data.id,
-                        quantity:data.quantity
-                }
+                        quantity:data.quantity   
+                       }
                 this.storeData.push(obj)
                 })  
             })
@@ -144,6 +144,18 @@ export default {
                         this.CountData.no=parseInt(this.CountData.no)+1
 
                         cartArray.push(data)
+                        console.log("q",data.quantity)
+                        console.log("id", data.id)
+                        let obj = {
+                        productId : data.id,
+                        quantity:data.quantity
+                        } 
+                        this.storeData.push(obj)
+                        const response=axios.post('addtoCart',this.storeData)
+                        console.log(response)
+
+                
+
                         localStorage.setItem("cartData", JSON.stringify(cartArray))
                         localStorage.setItem("cartcount",this.CountData.no)
                     }

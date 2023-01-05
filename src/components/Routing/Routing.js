@@ -101,7 +101,7 @@ const routes = [
     name: "Cart",
     component: Cart,
     path: "/Cart",
-    // meta: { auth: true },
+    meta: { auth: true },
   },
 ];
 const router = createRouter({

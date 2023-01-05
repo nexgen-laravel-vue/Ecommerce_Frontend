@@ -61,7 +61,7 @@ export default {
             }
         }
     },
-    methods: {
+    methods: {       
         login() {
             if (this.email == "" || this.password == "") {
                 this.error = "fields must be filled"
@@ -93,8 +93,11 @@ export default {
                                     this.$store.dispatch('setrouterAuthcheck', true)
                                     localStorage.setItem("firstName", FirstName)
                                     this.$router.push({ path: '/Admin' })
+                                    // window.location="/Admin"
                                 }
                                 if (Role == "User") {
+                                    // this.$session.setItem("username", "user123");
+                                    // console.log(this.$session("username"));
                                     this.$store.dispatch('setrouterAuthcheck', true)
                                     localStorage.setItem("token", token)
                                     localStorage.setItem("firstName", FirstName)
@@ -102,7 +105,9 @@ export default {
                                     // this can be 2 types
                                     // - 1 pervious url - example product page or contact page or any other page
                                     // - 2 click action on icon ( example car icon, cart page )
-                                    this.$router.push({ path: '/' })
+                                    this.$router.push({ path: '/customer'})
+                                    // window.location="/customer"
+
                                 }
                             }
                         }

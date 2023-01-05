@@ -112,12 +112,12 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
 
   let routerAuthcheck = store.state.routerAuthcheck;
-  
+  let token =localStorage.getItem("token")
   if (to.matched.some((record) => record.meta.auth)) {
-    if (routerAuthcheck) {
+    if (routerAuthcheck || token) {
       next();
     } else {
-      router.replace("/Login");
+      router.replace("/login");
     }
   } else {
     next();

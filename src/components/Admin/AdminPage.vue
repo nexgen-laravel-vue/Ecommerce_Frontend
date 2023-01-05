@@ -23,19 +23,22 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="#">My Profile</a></li>
                             <li><button class="dropdown-item" v-on:click="Logout">Log out</button></li>
+                           <li><a class="dropdown-item" href="/UserDetails">UserDetails</a></li>
+                            <li><a class="dropdown-item" href="/Productdetails">productDetails</a></li>
+
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row nav d-flex">
+        <!-- <div class="row nav d-flex">
             <div class="col-sm-12  col-md-12 col-lg-12 text-center ">
                 <router-link to="/UserDetails"
                     class="link-secondary text-decoration-none ms-3">UserDetails</router-link>
                 <router-link to="/ProductDetails"
                     class="link-secondary text-decoration-none ms-3">ProductDetails</router-link>
             </div>
-        </div>
+        </div> -->
     </div>
 
 

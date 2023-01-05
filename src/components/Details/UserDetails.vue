@@ -23,19 +23,26 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="#">My Profile</a></li>
                             <li><button class="dropdown-item" v-on:click="Logout">Logout</button></li>
+                            <li><a class="dropdown-item" href="/UserDetails">UserDetails</a></li>
+                            <li><a class="dropdown-item" href="/Productdetails">productDetails</a></li>
+
+                            
+
+
+
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row nav d-flex">
+        <!-- <div class="row nav d-flex">
             <div class="col-sm-12  col-md-12 col-lg-12 text-center ">
                 <router-link to="/UserDetails"
                     class="link-secondary text-decoration-none ms-3">UserDetails</router-link>
                 <router-link to="/ProductDetails"
                     class="link-secondary text-decoration-none ms-3">ProductDetails</router-link>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="container">
         <div class="row ">
@@ -63,10 +70,10 @@
                             <td>{{ item.phoneno }}</td>
                             <td>
                                 <router-link to=""> <button type="button"
-                                        class="btn btn-primary">Update</button></router-link>
+                                        class="btn btn-primary" v-on:click=update()>Update</button></router-link>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-danger" @click="delete (item.id)">Delete</button>
+                                <button type="button" class="btn btn-danger" @click="deleteUser(index)">Delete</button>
                             </td>
 
                         </tr>
@@ -90,7 +97,15 @@ export default {
             name: localStorage.getItem("firstName"),
             CountData: {
                 no: this.$cookies.get("count")
-            }
+            },
+             index:null,
+            getid : "",
+            post:{  
+                FirstName: "",
+                LastName: "",
+                PhoneNumber:"",
+    },
+    
         }
     },
     async created() {
@@ -108,7 +123,44 @@ export default {
             localStorage.removeItem("firstName");
             localStorage.removeItem("token");
             this.$store.dispatch('setrouterAuthcheck', false)
+        },
+        mounted(){
+         this.id=this.$route.params.id;
+         axios.get(`updateUserById/{id}${this.id}`).then((res)=>{
+        {
+            this.details=res.data;
+            console.log("success");
         }
+
+        
+})
+},
+deleteUser(id){
+        console.log("hello")
+        this.axois.delete(`deleteUserById/{id}${this.id}`)
+        .then(result=>{
+            console.log(result);
+            console.log("hello")
+         this.index=result.data;
+
+        }).catch(function(error){
+            console.log(error.result)
+        })
+    },
+    // update() {
+    //     alert(this.getid)
+    //     console.log(this.post)
+    //     axios.put(`updateUserById/{id}${this.getid}`)
+    //          .then(response => {
+    //              console.log(response);
+    //                this.post = response;
+    //              alert(this.getid)
+    //          }).catch(function (error) {
+    //             console.log(error.response)
+    //          })
+           
+    // },
+  
 
     }
 

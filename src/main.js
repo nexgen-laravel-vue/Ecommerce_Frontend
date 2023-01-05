@@ -7,10 +7,10 @@ import store from './components/Store/Store';
 import VueCookies from 'vue3-cookies'
 import './Styles/Styles.css'
 
-
+let token=localStorage.getItem('token');
+console.log(token)
 axios.defaults.baseURL='http://192.168.1.161:8000/api/';
-axios.defaults.headers.common['Authorization']='Bearer ' +localStorage.getItem('token');
-
+axios.defaults.headers.common['Authorization']=`Bearer  ${localStorage.getItem('token')}`;
 createApp(App)
 .use(store)
 .use(router)

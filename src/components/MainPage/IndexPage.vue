@@ -11,7 +11,7 @@
                 <h2 class="text-center">SHOP BY CATEGORY</h2>
             </div>
             <div class="row p-3">
-                <div class="col-md-3 col-sm-12" v-for="items in list" :key="items.id">
+                <div class="col-md-6 col-lg-4 col-xl-3" v-for="items in list" :key="items.id">
                     <router-link :to="`/SubCatagory/${items.id}`" class="nav-item nav-link active">
                         <div class="card mb-5 " style="width:16rem">
                             <p class="text-center m-0">{{ items.categoryName }}</p>
@@ -29,7 +29,7 @@
                 <h2 class="text-center">SHOP BY BRAND</h2>
             </div>
             <div class="row p-3">
-                <div class="col-md-3 col-sm-12" v-for="items in Brandlist" :key="items.id">
+                <div class="col-md-6 col-lg-4 col-xl-3" v-for="items in Brandlist" :key="items.id">
                     <router-link :to="`/ProductByBrands/${items.id}`" class="nav-item nav-link active">
                         <div class="card mb-5 " style="width:16rem">
                             <p class="text-center m-0">{{ items.brandName }}</p>

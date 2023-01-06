@@ -106,9 +106,7 @@ export default {
 
             localStorage.removeItem("firstName");
             localStorage.removeItem("token");
-            this.$store.dispatch('setrouterAuthcheck', false)
-            localStorage.setItem("check",false)
-            this.$router.push({ path: "/Login" })
+            this.$router.push({ path: "/Login" });
 
         }
     },

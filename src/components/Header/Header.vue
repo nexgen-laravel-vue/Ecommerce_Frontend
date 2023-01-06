@@ -66,7 +66,7 @@ export default {
     },
     async mounted() {
 
-        this.auth = store.state.routerAuthcheck
+        this.auth = localStorage.getItem('token');
         await axios.get(`getAllParentCategory`)
             .then((result) => {
                 if (result.status == 200 && result.data.payload.length > 0) {
@@ -79,6 +79,7 @@ export default {
     methods:{
         Logout(){
             localStorage.removeItem("firstName");
+            localStorage.removeItem('token')
             this.$router.push({ path: "/Login" })
             this.$store.dispatch('setrouterAuthcheck', false)
             localStorage.setItem("check",false)

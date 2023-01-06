@@ -95,7 +95,7 @@ export default {
         Logout() {
             localStorage.removeItem("firstName");
             this.$router.push({ path: "/Login" })
-            localStorage.setItem("check",false)
+            localStorage.removeItem('token')
         }
     },
     async mounted() {

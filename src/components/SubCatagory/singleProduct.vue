@@ -5,7 +5,7 @@
         </div>
 
         <div class="row mt-3  justify-content-center">
-            <div class="col-md-10 col-lg-12 " v-for="items in productdata" :key="items.id">
+            <div class="col-md-6 col-lg-6 col-xl-8 " v-for="items in productdata" :key="items.id">
                 <div class="card">
                     <div class="card-body">
                         <div v-if="msg" class="">
@@ -20,7 +20,7 @@
                                 <b class="ms-3">ProductName:</b>{{ items.productName }}<br />
                                 <b class="ms-3 ">ProductDescription:</b>{{ items.productDescription }}<br />
                                 <b class="ms-3">Price:</b>₹ {{ items.product_price }}
-                                <div class="cart ms-3">
+                                <div class="cart ms-3 content-nowrap ">
                                     <!-- <button
                                         class="btn btn-outline-primary ms-3"
                                         :class="{active:isActive}"
@@ -28,7 +28,7 @@
                                         >{{isActive ? "on" : 'Add to cart'}}</button> -->
                                         <button  class="btn btn-outline-primary"  v-on:click="addToCart"> Add to Cart</button>
                         
-                                    <button  class="btn btn-outline-warning ms-3" v-on:click="decrement(items.id)"><i
+                                    <button  class="btn btn-outline-warning ms-2" v-on:click="decrement(items.id)"><i
                                             class="fa fa-minus fa-lg"></i></button>
                                             {{quantity}}
                                     <button  class="btn btn-outline-success" v-on:click="increment(items.id)"><i
@@ -40,15 +40,12 @@
                         </div>
 
                     </div>
-                    <div class="row justify-content-center mt-2">
-
-                    </div>
                 </div>
-            </div>
+            
 
-            <div class="col-4">
-                <div>
-                    <router-link to="/"><button class="btn btn-outline-warning me-1">
+            <div class="">
+                <div class="d-flex justify-content-center">
+                    <router-link to="/"><button class="btn btn-outline-warning text-nowrap">
                             Continue shopping
                         </button></router-link>
 
@@ -57,11 +54,9 @@
                     </router-link>
 
 
-
-
-
                 </div>
             </div>
+        </div>
 
         </div>
         <Footer />
@@ -81,6 +76,7 @@ export default {
         return {
             msg: "",
             quantity: "",
+            no:"",
             prevData: localStorage.getItem("cartcount"),
             productdata: [],
             Cartdata: [],
@@ -97,6 +93,7 @@ export default {
         this.$cookies.set("prodId", this.id)
     },
     async mounted() {
+        this.no=this.quantity
         var response = await axios.get(`getSignleProductById/${this.id}`);
         if (response.status == 200) {
             const data = response.data.payload
@@ -109,7 +106,7 @@ export default {
 
         let LocalCartData = localStorage.getItem("cartData");
         if (LocalCartData == "" || LocalCartData == null) {
-            this.msg = "no Item is added"
+            //this.msg = "no Item is added"
         }
 
         this.Cartdata.push(JSON.parse(LocalCartData))
@@ -152,6 +149,7 @@ export default {
             else {
                 this.msg = "product already added";
             }
+            location.reload()
         },
         increment(items){
             let cartArray=[]

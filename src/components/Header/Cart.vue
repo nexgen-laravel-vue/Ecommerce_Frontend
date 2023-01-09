@@ -21,7 +21,7 @@
                                 <b class="ms-3 ">ProductDescription:</b>{{ items.productDescription }}<br />
                                 <b v-if="!msg" class="ms-3">Actual Price:₹ {{ items.product_price }}</b>
                                 <strike v-if="msg" ><b class="ms-3">Actual Price:</b>₹ {{ items.product_price }}</strike>
-                                <b v-if="msg" class="ms-3">₹ {{ items.product_price-discount }}</b>
+                                <b v-if="msg" class="ms-3">₹ {{ items.product_price-(items.product_price*pcDiscountfactor) }}</b>
                                 <div class="d-flex ">
                                     <div class="Qunatity ">
                                         <div class="ms-5">
@@ -66,26 +66,41 @@
                                     <label class="form-label "><b>₹{{ discount }}</b></label>
                                     <div class="error text-danger"></div>
                                 </div>
-                                <div class="form-outline d-flex mt-2">
-                                    <label class="form-label text-nowrap">Buying Price</label>
+                                <div class="form-outline  mt-2 buyingprice">
+                                    <label class="form-label text-nowrap  " >Buying Price: </label>
                                     <label class="form-label "><b>₹{{ TotalAmount-discount }}</b></label>
                                     <div class="error text-danger"></div>
                                 </div>
 
-                                <div class=" ms-5 d-flex">
-                                    <button v-if="!msg" type="button" class="btn btn-outline-success text-center">Buy</button>
-                                    <router-link to="/" class="btn btn-outline-warning ms-3 text-nowrap">continue shopping</router-link>
+                                <div class="mt-3">
+                                    <button v-if="!close" type="button" class="btn btn-outline-success text-center text-nowrap" v-on:click="processed">processed with payment</button>
+                                    <router-link to="/" class="btn btn-outline-warning ms-3 mt-3 text-nowrap">continue shopping</router-link>
                                 </div>
                             </div>
 
                         </div>
+                    </div>
+                    <div v-if="close" class="form-label text-nowrap">
+                        <div class="form-outline d-flex justify-content-center">
+                            <label class="form-label text-nowrap mt-2">Payment referral code: </label>
+                            <input type="text" class="form-control " style="width: 100px;" v-model="referralCode" />
+                        </div>
+                        
+                        <div class="d-flex justify-content-center">
+
+                            <button class="btn btn-outline-success "  v-on:click="pay">Pay</button>
+                        </div>
+
                     </div>
                 </div>
 
             </div>
         </div>
 
-        <Footer />
+
+        <div class="bg-light p-4">
+             <Footer />
+        </div>
     </div>
 </template>
 <script>
@@ -103,7 +118,10 @@ export default {
         return {
             // id: this.$cookies.get("prodId"),
             msg: "",
+            close:"",
             promocode: "",
+            pcDiscountfactor:0.1,
+            referralCode:"",
             productdata: [],
             TotalAmount: 0,
             AddDiscount: 0,
@@ -173,11 +191,29 @@ export default {
     methods: {
         procode() {
             if (this.promocode == "pc123") {
-                this.discount = (this.TotalAmount) * 0.1
-                this.TotalAmount=this.TotalAmount-this.discount
+                this.discount = (this.TotalAmount) * this.pcDiscountfactor
+                // this.TotalAmount=this.TotalAmount-this.discount
                 this.msg="12"
                 // this.AddDiscount = this.TotalAmount - this.discount
             }
+        },
+        processed(){
+            this.close="fake"
+        },
+        pay(){
+            console.log(this.referralCode)
+           // console.log(this.TotalAmount-this.discount)
+
+            let TotalPrice=this.TotalAmount-this.discount
+            console.log(TotalPrice);
+
+         axios.post('shopping',{
+                payment_amount:TotalPrice,
+                payment_ref:this.referralCode}).then((rest)=>{
+                    alert("payment successful")
+                })
+                
+
         },
         increment(items) {
             let cartArray = []
@@ -217,7 +253,7 @@ export default {
                 }
 
             })
-            location.reload()
+            //location.reload()
         },
         decrement(items) {
             let cartArray = []
@@ -246,7 +282,7 @@ export default {
                 }
 
             })
-            location.reload()
+            //location.reload()
         }
     }
 }

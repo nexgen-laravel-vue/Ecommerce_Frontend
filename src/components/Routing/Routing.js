@@ -16,6 +16,7 @@ import ProductByChildCategory from "../SubCatagory/ProductByChildCategory.vue";
 import singleProduct from "../SubCatagory/singleProduct.vue";
 import ProductDetails from "../Details/ProductDetails.vue";
 import Cart from "../Header/Cart.vue";
+import success from "../Details/success.vue"
 
 const routes = [
   {
@@ -103,6 +104,12 @@ const routes = [
     path: "/Cart",
     meta: { auth: true },
   },
+  {
+    name: "success",
+    component: success,
+    path: "/success",
+    meta: { auth: true },
+  }
 ];
 const router = createRouter({
   history: createWebHistory(),

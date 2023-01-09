@@ -9,7 +9,7 @@
                 
                     <div class="card mb-5 " style="width:16rem">
 
-                        <div class="card-body">
+                        <div class="card-body p-5">
                             <router-link :to="`/singleProduct/${items.id}`" class="nav-item nav-link active">
                             <img :src="items.product_img" class="img-fluid" width="250" height="100">
                             </router-link>
@@ -20,7 +20,9 @@
             </div>
 
         </div>
+        <div class="bg-light p-4">
         <Footer />
+        </div>
     </div>
 </template>
 <script>

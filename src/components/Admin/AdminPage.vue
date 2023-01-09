@@ -2,7 +2,7 @@
     <div class="row nav">
         <div class="col-sm-2 text-center mt-3">
             <router-link to="/" class="link-secondary text-decoration-none">
-                <h3>Logo</h3>
+                <img src="https://d1hbpr09pwz0sk.cloudfront.net/logo_url/nexgile-1d69d085" class="img-fluid" width="50">
             </router-link>
         </div>
         <div class="col-sm-7 ">
@@ -12,15 +12,15 @@
         </div>
         <div class="col-3 d-flex">
             <div class="card-body d-flex">
-                <i class="bi bi-person-circle fa-2x m-0"></i>
-                <div>
+                
+                <div class="font10">
                     <span class="ms-3">Hello,{{ name }}</span>
                     <div class="dropdown">
-                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        <button class="btn btn-default btn-sm dropdown-toggle font10" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             My Account
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu font10" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="#">My Profile</a></li>
                             <li><button class="dropdown-item" v-on:click="Logout">Log out</button></li>
                            <li><a class="dropdown-item" href="/UserDetails">UserDetails</a></li>
@@ -49,7 +49,7 @@
         <div class="row p-3">
             <div class="col-md-3 col-sm-12" v-for="items in list" :key="items.id">
                 <router-link :to="`/SubCatagory/${items.id}`" class="nav-item nav-link active">
-                    <div class="card mb-5 " style="width:16rem">
+                    <div class="card mb-5 p-5" style="width:16rem">
                         <p class="text-center m-0">{{ items.categoryName }}</p>
                         <div v-on:click="image(items.categoryName)" class="card-body">
                             <img :src="items.categoryImage" class="img-fluid" width="250" height="100">
@@ -67,7 +67,7 @@
         <div class="row p-3">
             <div class="col-md-3 col-sm-12" v-for="items in Brandlist" :key="items.id">
                 <router-link :to="`/ProductByBrands/${items.id}`" class="nav-item nav-link active">
-                    <div class="card mb-5 " style="width:16rem">
+                    <div class="card mb-5 p-5 " style="width:16rem">
                         <p class="text-center m-0">{{ items.brandName }}</p>
                         <div v-on:click="image(items.brandlogo)" class="card-body">
                             <img :src="items.brandlogo" class="img-fluid" width="250" height="100">
@@ -77,7 +77,10 @@
                 </router-link>
             </div>
         </div>
+        <div class="bg-light p-4">
+
         <Footer />
+        </div>
     </div>
 
 </template>

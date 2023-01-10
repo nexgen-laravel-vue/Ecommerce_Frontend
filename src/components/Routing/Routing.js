@@ -17,7 +17,9 @@ import singleProduct from "../SubCatagory/singleProduct.vue";
 import ProductDetails from "../Details/ProductDetails.vue";
 import Cart from "../Header/Cart.vue";
 import success from "../Details/success.vue";
-import Forgot from "../Login/Forgot.vue"
+import ResetPassword from "../Login/ResetPassword.vue";
+import Profile from '../customer/Profile.vue';
+import SendingMail from '../Login/SendingMail.vue'
 
 const routes = [
   {
@@ -112,9 +114,19 @@ const routes = [
     meta: { auth: true },
   },
   {
-    name:"Forgot",
-    component:Forgot,
-    path:"/Forgot"
+    name:"ResetPassword",
+    component:ResetPassword,
+    path:"/ResetPassword"
+  },
+  {
+    name:'Profile',
+    component:Profile,
+    path:'/Profile'
+  },
+  {
+    name:'SendingMail',
+    component:SendingMail,
+    path:'/sendingmail'
   }
 ];
 const router = createRouter({

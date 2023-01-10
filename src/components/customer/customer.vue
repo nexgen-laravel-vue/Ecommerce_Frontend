@@ -1,4 +1,5 @@
 <template>
+    
     <div class="row nav">
         <div class="col-sm-2 text-center mt-3">
             <router-link to="/" class="link-secondary text-decoration-none">
@@ -22,7 +23,7 @@
                                 My Account
                             </button>
                             <ul class="dropdown-menu font10 " aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                                <li><router-link to="/Profile" class="dropdown-item">My Profile</router-link></li>
                                 <li><a class="dropdown-item" href="#">My orders</a></li>
                                 <li><a class="dropdown-item" href="" @click="Logout">Logout</a></li>
                             </ul>

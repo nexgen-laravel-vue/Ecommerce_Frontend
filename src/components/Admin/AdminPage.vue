@@ -1,4 +1,7 @@
 <template>
+    <div class="container">
+
+   
     <div class="row nav">
         <div class="col-sm-2 text-center mt-3">
             <router-link to="/" class="link-secondary text-decoration-none">
@@ -66,9 +69,9 @@
         </div>
     </div>
     <div class="container">
-        <div class="mt-2">
-            <h2 class="text-center">SHOP BY BRAND</h2>
-        </div>
+        
+            <h2 class="text-center mt-2">SHOP BY BRAND</h2>
+        
         <div class="row p-3">
             <div class="col-md-3 col-sm-12" v-for="items in Brandlist" :key="items.id">
                 <router-link :to="`/ProductByBrands/${items.id}`" class="nav-item nav-link active">
@@ -81,6 +84,7 @@
                     </div>
                 </router-link>
             </div>
+        </div>
         </div>
         <div class="bg-light p-4">
 

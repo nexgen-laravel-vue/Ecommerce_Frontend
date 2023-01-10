@@ -1,9 +1,12 @@
 <template>
-    <div class="container">
-        <div class="topNV col-sm-12 ">
+    <div class="topNV col-sm-12 ">
 
-            <Header :cart='CountData.no'/>
-        </div>
+        <Header :cart='CountData.no'/>
+    </div>
+    <div class="container">
+        <div class="row">
+
+       
         <div class="mt-2">
             <h2 class="text-center">SHOP BY PRODUCT</h2>
         </div>
@@ -23,6 +26,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="bg-light p-4">
     <Footer />

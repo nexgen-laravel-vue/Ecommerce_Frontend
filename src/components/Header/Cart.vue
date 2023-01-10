@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="form-outline d-flex mt-2">
                                     <label class="form-label text-nowrap">Discount:</label>
-                                    <label class="form-label "><b>₹{{ discount }}</b></label>
+                                    <label class="form-label "><b>₹{{ discount.toFixed(1) }}</b></label>
                                     <div class="error text-danger"></div>
                                 </div>
                                 <div class="form-outline  mt-2 buyingprice">

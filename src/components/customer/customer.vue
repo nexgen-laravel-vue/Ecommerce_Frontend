@@ -12,18 +12,21 @@
         </div>
         <div class="col-3 d-flex">
             <div class="card-body d-flex">
-                <div class="font10">
-                    <span class="ms-3 font10">Hello,{{ name }}</span>
-                    <div class="dropdown ms-3">
-                        <button class="btn btn-default btn-sm dropdown-toggle font10" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            My Account
-                        </button>
-                        <ul class="dropdown-menu font10 " aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">My Profile</a></li>
-                            <li><a class="dropdown-item" href="#">My orders</a></li>
-                            <li><a class="dropdown-item" href="" @click="Logout">Logout</a></li>
-                        </ul>
+                <div class="font11">
+
+                    <div class="font10">
+                        <span class="ms-4 font10">Hello,{{ name }}</span>
+                        <div class="dropdown ms-3">
+                            <button class="btn btn-default btn-sm dropdown-toggle font10" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                My Account
+                            </button>
+                            <ul class="dropdown-menu font10 " aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                                <li><a class="dropdown-item" href="#">My orders</a></li>
+                                <li><a class="dropdown-item" href="" @click="Logout">Logout</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="mcart">

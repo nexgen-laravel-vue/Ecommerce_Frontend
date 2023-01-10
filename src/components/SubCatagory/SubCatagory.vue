@@ -9,9 +9,9 @@
             <h2 class="text-center">SHOP BY SUBCATEGORY</h2>
         </div>
         <div class="row p-3">
-            <div class="col-md-3 col-sm-12" v-for="items in list" :key="items.id">
+            <div class="col-md-6 col-lg-4 col-xl-3" v-for="items in list" :key="items.id">
                 <router-link :to="`/ProductCatagory/${items.id}`" class="nav-item nav-link active">
-                    <div class="card mb-5 " style="width:16rem">
+                    <div class="card mb-5 p-5" style="width:16rem">
 
                         <div class="card-body">
                             <img :src="items.categoryImage" class="img-fluid" width="250" height="100">
@@ -21,6 +21,8 @@
                 </router-link>
             </div>
         </div>
+    </div>
+    <div class="bg-light p-4">
         <Footer />
     </div>
 </template>

@@ -4,7 +4,7 @@
     </div>
     <div class="container">
         <div class="row justify-content-center ms-5">
-            <div class="col-md-6 ">
+            <div class="col-md-8 col-lg-6 col-xl-5">
                 <div class="heading justify-content-center mt-3">
                     <h1>Login Form</h1>
                 </div>
@@ -24,7 +24,6 @@
                     <div class="form-outline">
                         <label class="form-label">Password</label>
                         <input type="password" class="form-control form-control-lg" v-model="password" />
-                        <div class="error text-danger"></div>
                     </div>
                 </div>
                 <div class="d-flex pt-2">
@@ -32,12 +31,17 @@
                     <button type="reset" class="btn btn-secondary btn-lg ms-2" @click="clear">clear</button>
 
                 </div>
+                <div class="forgot">
+                    <router-link to="" class="link-danger">Forgot Password</router-link>
+                </div>
                 <p class="small fw-bold  pt-1 mb-0">Don't have an account? <router-link to="/Register"
                         class="link-danger">SignUp</router-link></p>
             </div>
         </div>
     </div>
-    <Footer />
+    <div class="bg-light p-4">
+        <Footer />
+        </div>
 </template>
 <script>
 import axios from 'axios';
@@ -91,6 +95,7 @@ export default {
                             if (token) {
                                 if (Role == "Admin" || Role == "SuperAdmin") {
                                     localStorage.setItem("token", token)
+                                    localStorage.setItem("Role",Role)
                                     this.$store.dispatch('setrouterAuthcheck', true)
                                     localStorage.setItem("firstName", FirstName)
                                     this.$router.push({ path: '/Admin' })
@@ -101,6 +106,7 @@ export default {
                                     // console.log(this.$session("username"));
                                     this.$store.dispatch('setrouterAuthcheck', true)
                                     localStorage.setItem("token", token)
+                                    localStorage.setItem("Role",Role)
                                     localStorage.setItem("firstName", FirstName)
                                     // check the last action and redirect user to that page
                                     // this can be 2 types

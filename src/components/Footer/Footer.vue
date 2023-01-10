@@ -1,7 +1,8 @@
 <template>
-    <div class="container">
+
+    <div class="container font12 mb-5">
         <div class="row mt-3">
-            <div class="col-sm-3 col-md-3 col-lg-3 ">
+            <div class="col-md-6 col-lg-4 col-xl-3 ">
                 <div class="card">
                     <div class="card-body d-flex">
                         <i class="fa fa-phone fa-lg mt-4"></i>
@@ -14,7 +15,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-3 col-md-3 col-lg-3 ">
+            <div class="col-md-6 col-lg-4 col-xl-3 ">
                 <div class="card">
                     <div class="card-body d-flex">
                         <i class="fa fa-car fa-lg mt-4"></i>
@@ -28,7 +29,7 @@
 
             </div>
 
-            <div class="col-sm-3 col-md-3 col-lg-3 ">
+            <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="card">
                     <div class="card-body d-flex">
                         <i class="fa fa-credit-card fa-lg mt-4"></i>
@@ -41,7 +42,7 @@
 
             </div>
 
-            <div class="col-sm-3 col-md-3 col-lg-3 ">
+            <div class="col-md-6 col-lg-4 col-xl-3 ">
                 <div class="card">
                     <div class="card-body d-flex">
                         <i class="fa fa-user-plus fa-lg mt-4"></i>
@@ -57,9 +58,9 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container font12">
         <div class="row ">
-            <div class="col-sm-3 col-md-3 col-lg-3 text-center ">
+            <div class="col-md-6 col-lg-4 col-xl-3 text-center ">
                 <h3>Legals</h3>
                 <p><router-link to="" class="link-secondary text-decoration-none">Delivery</router-link></p>
                 <p><router-link to="" class="link-secondary text-decoration-none">Returns</router-link></p>
@@ -69,7 +70,7 @@
                 <p><router-link to="" class="link-secondary text-decoration-none">FAQ</router-link></p>
             </div>
 
-            <div class="col-sm-3 col-md-3 col-lg-3 text-center  ">
+            <div class="col-md-6 col-lg-4 col-xl-3 text-center  ">
                 <h3>Get to Know us</h3>
                 <p><router-link to="" class="link-secondary text-decoration-none">About us</router-link></p>
                 <p><router-link to="" class="link-secondary text-decoration-none">Contact us</router-link></p>
@@ -77,7 +78,7 @@
 
             </div>
 
-            <div class="col-sm-3 col-md-3 col-lg-3 text-center  ">
+            <div class="col-md-6 col-lg-4 col-xl-3 text-center  ">
                 <h3>Follow us</h3>
                 <p><i class="bi bi-linkedin fa-lg "></i><router-link to=""
                         class="link-secondary ms-2 text-decoration-none">Linkedin</router-link></p>
@@ -88,7 +89,7 @@
                 <p><i class="bi bi-facebook fa-lg"></i><router-link to=""
                         class="link-secondary ms-2 text-decoration-none">Facebook</router-link></p>
             </div>
-            <div class="col-sm-3 col-md-3 col-lg-3 text-center">
+            <div class="col-md-6 col-lg-4 col-xl-3 text-center">
                 <h3>Payment method</h3>
                 <router-link to="" class="link-secondary"><img class="w-25 h-25"
                         src="https://miro.medium.com/max/750/1*FOZ-JA_WEyfNVP7HBTRBDg.png" alt=".." /></router-link>
@@ -114,9 +115,9 @@
     </div>
     <hr />
 
-    <div class="text-center">
+    <div class="text-center font10">
 
-        <p>Copyright@<b class="border border-danger text-danger">Company Name</b>2022-All rights reserved </p>
+        <p>Nexgile Techecnologies Pvt. Ltd. 2013 - 2023, All Rights Reserved </p>
 
     </div>
 

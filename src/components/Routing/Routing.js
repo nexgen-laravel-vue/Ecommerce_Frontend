@@ -16,7 +16,8 @@ import ProductByChildCategory from "../SubCatagory/ProductByChildCategory.vue";
 import singleProduct from "../SubCatagory/singleProduct.vue";
 import ProductDetails from "../Details/ProductDetails.vue";
 import Cart from "../Header/Cart.vue";
-import success from "../Details/success.vue"
+import success from "../Details/success.vue";
+import Forgot from "../Login/Forgot.vue"
 
 const routes = [
   {
@@ -109,6 +110,11 @@ const routes = [
     component: success,
     path: "/success",
     meta: { auth: true },
+  },
+  {
+    name:"Forgot",
+    component:Forgot,
+    path:"/Forgot"
   }
 ];
 const router = createRouter({

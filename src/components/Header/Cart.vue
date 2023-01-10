@@ -193,7 +193,7 @@ export default {
             if (this.promocode == "pc123") {
                 this.discount = (this.TotalAmount) * this.pcDiscountfactor
                 // this.TotalAmount=this.TotalAmount-this.discount
-                this.msg="12"
+                this.msg="fake"
                 // this.AddDiscount = this.TotalAmount - this.discount
             }
         },
@@ -253,7 +253,7 @@ export default {
                 }
 
             })
-            //location.reload()
+            location.reload()
         },
         decrement(items) {
             let cartArray = []
@@ -282,7 +282,7 @@ export default {
                 }
 
             })
-            //location.reload()
+            location.reload()
         }
     }
 }

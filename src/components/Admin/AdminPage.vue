@@ -12,21 +12,26 @@
         </div>
         <div class="col-3 d-flex">
             <div class="card-body d-flex">
-                
-                <div class="font10">
-                    <span class="ms-3">Hello,{{ name }}</span>
-                    <div class="dropdown">
-                        <button class="btn btn-default btn-sm dropdown-toggle font10" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            My Account
-                        </button>
-                        <ul class="dropdown-menu font10" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">My Profile</a></li>
-                            <li><button class="dropdown-item" v-on:click="Logout">Log out</button></li>
-                           <li><a class="dropdown-item" href="/UserDetails">UserDetails</a></li>
-                            <li><a class="dropdown-item" href="/Productdetails">productDetails</a></li>
+                <div class="font11">
 
-                        </ul>
+                    <div class="font10">
+                        <span class="ms-2">Hello,{{ name }}</span>
+                        <div class="dropdown">
+                            <button class="btn btn-default btn-sm dropdown-toggle font10" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                My Account
+                            </button>
+                            <ul class="dropdown-menu font10" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Order Management</a></li>
+                                <li><a class="dropdown-item" href="#">Address Management</a></li>
+                                <li><a class="dropdown-item" href="#">Payment Management</a></li>
+                                <li><a class="dropdown-item" href="/UserDetails">UserDetails</a></li>
+                                <li><a class="dropdown-item" href="/Productdetails">productDetails</a></li>
+                                <li><button class="dropdown-item" v-on:click="Logout">Logout</button></li>
+    
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

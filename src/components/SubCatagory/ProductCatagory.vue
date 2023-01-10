@@ -8,11 +8,11 @@
                 <h2 class="text-center">SHOP BY PRODUCT</h2>
             </div>
             <div class="row p-3">
-              <div class="col-md-3 col-sm-12" v-for="items in productdata" :key="items.id">
+              <div class="col-md-6 col-lg-4 col-xl-3" v-for="items in productdata" :key="items.id">
                 <router-link :to="`/ProductByChildCategory/${items.id}`"  class="nav-item nav-link active">
                 <div class="card mb-5 "   style="width:16rem">
                    
-                    <div  class="card-body">
+                    <div  class="card-body p-5">
                         <img :src="items.categoryImage" class="img-fluid" width="250" height="100">
                     </div>
                    <p class="text-center m-0">{{ items.categoryName}}</p>
@@ -20,8 +20,10 @@
             </router-link>
               </div>
             </div>
-            <Footer/>
-</div>
+        </div>
+        <div class="bg-light p-4">
+            <Footer />
+        </div>
 
 </template>
 <script>

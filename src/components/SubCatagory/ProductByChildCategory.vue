@@ -8,9 +8,10 @@
             <h2 class="text-center">SHOP BY PRODUCT</h2>
         </div>
         <div class="row p-3">
-            <div class="col-md-3 col-sm-12" v-for="item in productdata[0]" :key="item.id">
+            <div class="col-md-6 col-lg-4 col-xl-3" v-for="item in productdata[0]" :key="item.id">
 
-                <div class="card mb-5 " style="width:16rem">
+                <div class=" d-flex justify-content-center">
+                <div class="card mb-5 p-5 " style="width:16rem">
 
                     <div class="card-body">
                         <router-link :to="`/singleProduct/${item.id}`" class="nav-item nav-link active">
@@ -19,10 +20,12 @@
                     </div>
                     <p class="text-center m-0">{{ item.productName }}</p>
                 </div>
-
+                </div>
             </div>
         </div>
-        <Footer />
+    </div>
+    <div class="bg-light p-4">
+    <Footer />
     </div>
 </template>
 <script>
@@ -37,7 +40,7 @@ export default {
     },
     data() {
         return {
-            
+            msg:"",
             productdata: [],
             count: {},
             props:['user'],
@@ -61,6 +64,11 @@ export default {
             const data = response.data.payload
             this.productdata.push(data)
         }
+        if(response.data.payload=="")
+            {
+                alert(" no items")
+            }
+        
     },
     methods: {
         AddToCart() {

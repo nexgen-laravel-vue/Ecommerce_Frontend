@@ -27,9 +27,9 @@
 
 </template>
 <script>
-import axios from 'axios';
 import Header from '../Header/Header.vue';
 import Footer from '../Footer/Footer.vue';
+import { getChildCategoryById } from '../service/api/ApiServices';
 export default{
     name:'ProductCatagory',
     components:{
@@ -50,8 +50,8 @@ export default{
         console.log(this.id);
     },
     async mounted(){
-        await axios.get(`getChildCategoryById/${this.id}`).
-        then((result)=>{
+
+        getChildCategoryById(this.id).then((result)=>{
             if(result.status==200 && result.data.length>0)
             {
                 const data=result.data;
@@ -59,8 +59,20 @@ export default{
                 console.log(this.productdata);
 
             }
-            
+
         })
+
+        // await axios.get(`getChildCategoryById/${this.id}`).
+        // then((result)=>{
+        //     if(result.status==200 && result.data.length>0)
+        //     {
+        //         const data=result.data;
+        //         this.productdata=data;
+        //         console.log(this.productdata);
+
+        //     }
+            
+        // })
     }
 
 }

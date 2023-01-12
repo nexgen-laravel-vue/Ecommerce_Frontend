@@ -30,9 +30,9 @@
 </div>
 </template>
 <script>
-import axios from 'axios';
 import Header from '../Header/Header.vue';
 import Footer from '../Footer/Footer.vue';
+import { getChildCategoryById } from '../service/api/ApiServices';
 export default {
     name: 'SubCatagory',
     components: {
@@ -53,16 +53,15 @@ export default {
         console.log(this.id);
     },
     async mounted() {
-        await axios.get(`getChildCategoryById/${this.id}`)
-            .then((result) => {
-                //console.log(result.data);
-                if (result.status == 200 && result.data.length > 0) {
+        getChildCategoryById(this.id).then((result)=>{
+            if (result.status == 200 && result.data.length > 0) {
                     const data = result.data;
                     this.list = data;
                     console.log(this.list);
 
                 }
-            })
+
+        })
     },
 }
 </script>

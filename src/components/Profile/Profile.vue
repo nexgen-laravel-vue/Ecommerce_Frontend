@@ -5,29 +5,25 @@
             <Header :cart='CountData.no' />
         </div>
       <div class="col-lg-4">
-        <div class="card mb-4">
-          <div class="card-body text-center">
+        <div class="card m-5 font12">
+          <div class="card-body text-center " >
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
               class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3">John Smith</h5>
-            <p class="text-muted mb-1">Full Stack Developer</p>
+            <h5 class="my-3">{{ CountData.name }}</h5>
+            <p class="text-muted mb-1">{{ CountData.Role }}</p>
             <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
-            <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-primary">Follow</button>
-              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-            </div>
           </div>
         </div>
         </div>
         <div class="col-lg-8">
-        <div class="card mb-4">
+        <div class="card m-5 font12">
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Name</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">Johnatan Smith</p>
+                <p class="text-muted mb-0">{{ CountData.name }}</p>
               </div>
             </div>
             <hr>
@@ -36,7 +32,7 @@
                 <p class="mb-0">Mobile</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">(097) 234-5678</p>
+                <p class="text-muted mb-0">{{ CountData.number }}</p>
               </div>
             </div>
             <hr>
@@ -45,7 +41,7 @@
                 <p class="mb-0">Email</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">example@example.com</p>
+                <p class="text-muted mb-0">{{ CountData.Email }}</p>
               </div>
             </div>
             <hr>
@@ -79,10 +75,10 @@
         </div>
         </div>
 </div>
+</div>
 <div class="bg-light p-4">
         <Footer />
     </div>
-</div>
 </template>
 <script>
 import Header from '../Header/Header.vue';
@@ -96,7 +92,11 @@ export default{
     data(){
         return{
             CountData: {
-                no: localStorage.getItem("cartcount")
+                no: localStorage.getItem("cartcount"),
+                name:localStorage.getItem("firstName"),
+                Email:localStorage.getItem("Email"),
+                number:localStorage.getItem("number"),
+                Role:localStorage.getItem("Role")
             },
         }
     }

@@ -38,6 +38,16 @@
                 </div>
             </div>
         </div>
+        <div class="row nav d-flex mt-3 font12">
+        <div class="col-sm-6 col-md-6 col-lg-12 col-xl-12 text-center ">
+            <router-link to="/SubCatagory/1" class="link-secondary text-decoration-none ">Electronics & Computers</router-link>
+            <router-link to="" class="link-secondary text-decoration-none ms-5">Home,Garden & Pets</router-link>
+            <router-link to="" class="link-secondary text-decoration-none ms-5">Sports & Outdoors</router-link>
+            <router-link to="" class="link-secondary text-decoration-none ms-5">Entertainments</router-link>
+
+        </div>
+
+    </div>
     </div>
     <div class="container">
         <div class="mt-2">
@@ -82,7 +92,8 @@
     </div>
 </template>
 <script >
-import axios from 'axios'
+import { getAllParentCategory } from '../service/api/ApiServices';
+import {getAllBrand} from '../service/api/ApiServices'
 import Footer from '../Footer/Footer.vue';
 export default {
     name: "customer",
@@ -104,29 +115,33 @@ export default {
         Logout() {
             localStorage.removeItem("firstName");
             this.$router.push({ path: "/Login" })
-            localStorage.removeItem('token')
+            localStorage.removeItem('token');
+            localStorage.removeItem('Email');
+            localStorage.removeItem('number');
         }
     },
     async mounted() {
-        await axios.get(`getAllParentCategory`)
-            .then((result) => {
-                if (result.status == 200 && result.data.payload.length > 0) {
+        getAllParentCategory('getAllParentCategory').then((result)=>{
+            
+            if (result.status == 200 && result.data.payload.length > 0) {
                     const data = result.data.payload;
                     this.list = data;
                     console.log(this.list);
 
-                }
+                 }
             })
 
-        await axios.get(`getAllBrand`)
-            .then((result) => {
-                if (result.status == 200 && result.data.payload.length > 0) {
+            getAllBrand('getAllBrand').then((result)=>{
+
+
+            if (result.status == 200 && result.data.payload.length > 0) {
                     const data = result.data.payload;
                     this.Brandlist = data;
                     console.log(this.Brandlist);
 
                 }
-            })
+
+})
 
 
 

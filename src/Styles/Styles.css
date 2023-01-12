@@ -31,10 +31,10 @@
   -moz-border-radius: 9px;
   border-radius: 9px;
 }
+
 @media  (min-width: 220px) and (max-width: 480px) {
     #lblCartCount{
         
-    margin-left: 9px;
     margin-top: -15px;
    
     

@@ -1,10 +1,10 @@
 <template>
+    <div class="topNV col-sm-12 ">
+
+<Header :cart='CountData.no' />
+</div>
     <div class="container">
         <div class="row">
-                <div class="topNV col-sm-12 ">
-            
-            <Header :cart='CountData.no' />
-            </div>
                 
 
                 <div class="mt-5 mb-5">
@@ -53,9 +53,11 @@
 
 </template>
 <script>
+import.meta.env;
 import Header from '../Header/Header.vue';
 import Footer from '../Footer/Footer.vue';
-import axios from 'axios';
+import { getAllParentCategory } from '../service/api/ApiServices';
+import {getAllBrand} from '../service/api/ApiServices';
 export default {
     name: 'IndexPage',
     components: {
@@ -74,28 +76,32 @@ export default {
 
 
     },
+    
+
     async mounted() {
-        await axios.get(`getAllParentCategory`)
-            .then((result) => {
-                if (result.status == 200 && result.data.payload.length > 0) {
+        console.log("api",`${import.meta.env.VITE_APP_ROOT_API}`)
+         getAllParentCategory('getAllParentCategory').then((result)=>{
+            
+            if (result.status == 200 && result.data.payload.length > 0) {
                     const data = result.data.payload;
                     this.list = data;
                     console.log(this.list);
 
-                }
+                 }
             })
+    
+            
+            getAllBrand('getAllBrand').then((result)=>{
 
-        await axios.get(`getAllBrand`)
-            .then((result) => {
+
                 if (result.status == 200 && result.data.payload.length > 0) {
                     const data = result.data.payload;
                     this.Brandlist = data;
                     console.log(this.Brandlist);
 
                 }
+
             })
-
-
 
     },
 }

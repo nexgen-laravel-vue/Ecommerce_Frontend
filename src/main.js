@@ -7,9 +7,7 @@ import store from './components/Store/Store';
 import VueCookies from 'vue3-cookies'
 import './Styles/Styles.css'
 
-let token=localStorage.getItem('token');
-console.log(token)
-axios.defaults.baseURL='http://192.168.1.250:8000/api/';
+axios.defaults.baseURL=`${import.meta.env.VITE_APP_ROOT_API}`;
 axios.defaults.headers.common['Authorization']=`Bearer  ${localStorage.getItem('token')}`;
 createApp(App)
 .use(store)

@@ -25,7 +25,7 @@
                                 My Account
                             </button>
                             <ul class="dropdown-menu font10" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><router-link to="/Profile" class="dropdown-item"> Profile</router-link></li>
                                 <li><a class="dropdown-item" href="#">Order Management</a></li>
                                 <li><a class="dropdown-item" href="#">Address Management</a></li>
                                 <li><a class="dropdown-item" href="#">Payment Management</a></li>
@@ -96,7 +96,8 @@
 <script>
 import axios from 'axios';
 import Footer from '../Footer/Footer.vue';
-
+import { getAllParentCategory } from '../service/api/ApiServices';
+import {getAllBrand} from '../service/api/ApiServices';
 export default {
     name: "Admin",
     components: {
@@ -123,25 +124,27 @@ export default {
         }
     },
     async mounted() {
-        await axios.get(`getAllParentCategory`)
-            .then((result) => {
-                if (result.status == 200 && result.data.payload.length > 0) {
+        getAllParentCategory('getAllParentCategory').then((result)=>{
+            
+            if (result.status == 200 && result.data.payload.length > 0) {
                     const data = result.data.payload;
                     this.list = data;
                     console.log(this.list);
 
-                }
+                 }
             })
 
-        await axios.get(`getAllBrand`)
-            .then((result) => {
+            getAllBrand('getAllBrand').then((result)=>{
+
+
                 if (result.status == 200 && result.data.payload.length > 0) {
-                    const data = result.data.payload;
-                    this.Brandlist = data;
-                    console.log(this.Brandlist);
+                        const data = result.data.payload;
+                        this.Brandlist = data;
+                        console.log(this.Brandlist);
 
-                }
-            })
+                    }
+
+})
 
 
 

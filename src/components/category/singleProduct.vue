@@ -75,9 +75,9 @@
     </div>
 </template>
 <script>
-import axios from 'axios';
 import Header from '../Header/Header.vue';
 import Footer from '../Footer/Footer.vue';
+import { getSignleProductById } from '../service/api/ApiServices';
 import store from '../Store/Store';
 export default {
     name: 'singleProduct',
@@ -110,8 +110,9 @@ export default {
     async mounted() {
         this.no = this.quantity
         console.log("indexvalue", store.state.cartindex)
-        var response = await axios.get(`getSignleProductById/${this.id}`);
-        if (response.status == 200) {
+        
+        getSignleProductById(this.id).then((response)=>{
+            if (response.status == 200) {
             const data = response.data.payload
             var addedItem = { ...data[0], quantity: 1 };
             console.log(addedItem)
@@ -119,6 +120,8 @@ export default {
             // var addedItem = { ...this.productdata[0][0], quantity: 1 };
             console.log(this.productdata)
         }
+        })
+        
 
         let LocalCartData = localStorage.getItem("cartData");
         if (LocalCartData == "" || LocalCartData == null) {
@@ -127,12 +130,6 @@ export default {
 
         this.Cartdata.push(JSON.parse(LocalCartData))
         console.log(this.Cartdata)
-
-
-        window.addEventListener('foo-key-localstorage-changed', (event) => {
-            this.hello = event.detail.storage;
-        });
-        console.log("helo", this.hello)
 
     },
     methods: {
@@ -165,18 +162,11 @@ export default {
                 localStorage.setItem("cartData", JSON.stringify(cartDetails))
                 localStorage.setItem("cartcount", this.countvalue)
                 this.msg = "Item added to cart ";
-
-                window.dispatchEvent(new CustomEvent('foo-key-localstorage-changed', {
-                    detail: {
-                        storage: localStorage.getItem('cartcount')
-                    }
-                }));
-
             }
             else {
                 this.msg = "product already added";
             }
-            location.reload()
+           //location.reload()
         },
         increment(items) {
             let cartArray = []

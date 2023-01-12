@@ -2,25 +2,22 @@ import { createRouter, createWebHistory } from "vue-router";
 import Header from "../Header/Header.vue";
 import Footer from "../Footer/Footer.vue";
 import IndexPage from "../MainPage/IndexPage.vue";
-import NavBar from "../Header/NavBar.vue";
-import SubCatagory from "../SubCatagory/SubCatagory.vue";
-import ProductByBrands from "../ProductByBrands/ProductByBrands.vue";
-import ProductCatagory from "../SubCatagory/ProductCatagory.vue";
+import SubCatagory from "../category/SubCatagory.vue";
+import ProductCatagory from "../category/ProductCatagory.vue";
 import Register from "../Register/RegistrationPage.vue";
 import Login from "../Login/LoginPage.vue";
 import Admin from "../Admin/AdminPage.vue";
 import customer from "../customer/customer.vue";
 import store from "../Store/Store";
-import UserDetails from "../Details/UserDetails.vue";
-import ProductByChildCategory from "../SubCatagory/ProductByChildCategory.vue";
-import singleProduct from "../SubCatagory/singleProduct.vue";
-import ProductDetails from "../Details/ProductDetails.vue";
-import Cart from "../Header/Cart.vue";
-import success from "../Details/success.vue";
+import UserData from "../Admin/UserData.vue";
+import ProductByChildCategory from "../category/ProductByChildCategory.vue";
+import singleProduct from "../category/singleProduct.vue";
+import ProductData from "../Admin/ProductData.vue";
+import Cart from "../cart/Cart.vue";
 import ResetPassword from "../Login/ResetPassword.vue";
-import Profile from '../customer/Profile.vue';
+import Profile from '../Profile/Profile.vue';
 import SendingMail from '../Login/SendingMail.vue'
-
+import ProductByBrands from "../category/ProductByBrands/ProductByBrands.vue";
 const routes = [
   {
     name: "Header",
@@ -36,11 +33,6 @@ const routes = [
     name: "IndexPage",
     component: IndexPage,
     path: "/",
-  },
-  {
-    name: "NavBar",
-    component: NavBar,
-    path: "/NavBar",
   },
   {
     name: "SubCatagory",
@@ -80,8 +72,8 @@ const routes = [
     meta: { auth: true },
   },
   {
-    name: "UserDetails",
-    component: UserDetails,
+    name: "UserData",
+    component: UserData,
     path: "/UserDetails",
     meta: { auth: true },
   },
@@ -96,8 +88,8 @@ const routes = [
     path: "/singleProduct/:id",
   },
   {
-    name: "ProductDetails",
-    component: ProductDetails,
+    name: "ProductData",
+    component: ProductData,
     path: "/ProductDetails",
     meta: { auth: true },
   },
@@ -105,12 +97,6 @@ const routes = [
     name: "Cart",
     component: Cart,
     path: "/Cart",
-    meta: { auth: true },
-  },
-  {
-    name: "success",
-    component: success,
-    path: "/success",
     meta: { auth: true },
   },
   {

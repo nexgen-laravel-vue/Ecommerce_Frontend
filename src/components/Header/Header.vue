@@ -62,11 +62,11 @@
         </div>
     
     <div class="row nav d-flex mt-3 font12">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center ">
-            <router-link to="/SubCatagory/1" class="link-secondary text-decoration-none ">Electronics & Computers</router-link>
-            <router-link to="" class="link-secondary text-decoration-none ms-5">Home,Garden & Pets</router-link>
-            <router-link to="" class="link-secondary text-decoration-none ms-5">Sports & Outdoors</router-link>
-            <router-link to="" class="link-secondary text-decoration-none ms-5">Entertainments</router-link>
+        <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12 text-center ">
+            <router-link to="/SubCatagory/1" class="link-secondary text-decoration-none ms-3 ">Electronics & Computers</router-link>&nbsp&nbsp&nbsp
+            <router-link to="" class="link-secondary text-decoration-none ">Home,Garden & Pets</router-link>&nbsp&nbsp&nbsp
+            <router-link to="" class="link-secondary text-decoration-none ">Sports & Outdoors</router-link>&nbsp&nbsp&nbsp
+            <router-link to="" class="link-secondary text-decoration-none ">Entertainments</router-link>
 
         </div>
 

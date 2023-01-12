@@ -33,9 +33,9 @@
     </div>
 </template>
 <script>
-import axios from 'axios';
 import Header from '../Header/Header.vue';
 import Footer from '../Footer/Footer.vue';
+import { getAllProductByChildCategoryId } from '../service/api/ApiServices';
 export default {
     name: 'ProductByChildCategory',
     components: {
@@ -59,19 +59,18 @@ export default {
         console.log(this.id);
     },
     async mounted() {
-        var response = await axios.get(`getAllProductByChildCategoryId/${this.id}`);
-        console.log("res", response)
-        console.log("dataplayload", response.data.payload)
-        console.log("status", response.status)
+            getAllProductByChildCategoryId(this.id).then((response)=>{
+                if (response.status == 200) {
+                    const data = response.data.payload
+                    this.productdata.push(data)
+                }
+                if(response.data.payload=="")
+                {
+                    alert(" no items")
+                }
 
-        if (response.status == 200) {
-            const data = response.data.payload
-            this.productdata.push(data)
-        }
-        if(response.data.payload=="")
-            {
-                alert(" no items")
-            }
+            })
+        
         
     },
     methods: {

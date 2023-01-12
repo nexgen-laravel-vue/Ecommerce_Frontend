@@ -20,15 +20,15 @@
             </div>
 
         </div>
-        <div class="bg-light p-4">
-        <Footer />
-        </div>
+    </div>
+    <div class="bg-light p-4">
+    <Footer />
     </div>
 </template>
 <script>
-import Header from '../Header/Header.vue';
-import axios from 'axios';
-import Footer from '../Footer/Footer.vue';
+import Header from '../../Header/Header.vue';
+import Footer from '../../Footer/Footer.vue';
+import { getAllPRoductByBrandId } from '../../service/api/ApiServices';
 export default {
     name: "ProductByBrands",
     components: {
@@ -48,16 +48,18 @@ export default {
         console.log(this.id);
     },
     async mounted() {
-        await axios.get(`getAllPRoductByBrandId/${this.id}`)
-            .then((result) => {
-                //console.log(result.data);
-                if (result.status == 200 && result.data.length > 0) {
+
+
+        getAllPRoductByBrandId(this.id).then((result)=>{
+
+            if (result.status == 200 && result.data.length > 0) {
                     const data = result.data;
                     this.productdata = data;
                     console.log(this.productdata.id);
 
                 }
-            })
+
+        })
     },
 }
 </script>
